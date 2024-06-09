@@ -4,13 +4,13 @@ import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:sliding_drawers/utils/scheduler_callbacks.dart';
-import 'package:sliding_drawers/widgets/measurable.dart';
 
 import 'dart:math' as math;
 
+import 'utils/scheduler_callbacks.dart';
 import 'widgets/debug_area_bounds.dart';
 import '../utils/debounced_action.dart';
+import 'widgets/measurable.dart';
 
 part 'widgets/drawer.dart';
 part 'widgets/scrollable.dart';

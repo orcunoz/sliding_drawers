@@ -11,6 +11,11 @@ const int _minInt =
 typedef DrawerFrameBuilder = Widget Function(
     BuildContext context, SlidingDrawerTranslation position, Widget child);
 
+enum DrawerOnScrollBehavior {
+  slide,
+  stayBelow,
+}
+
 class LimitedRange {
   const LimitedRange({this.min, this.max})
       : assert(min == null || max == null || min <= max,
@@ -58,13 +63,12 @@ class LimitedRange {
 class LimitedRangeTween extends Tween<LimitedRange> {
   LimitedRangeTween({super.begin, super.end});
 
-  /// Returns the value this variable has at the given animation clock value.
   @override
   LimitedRange lerp(double t) => LimitedRange.lerp(begin, end, t)!;
 }
 
 class ReverseSlidingDrawer extends SlidingDrawer {
-  ReverseSlidingDrawer({
+  const ReverseSlidingDrawer({
     super.key,
     required this.reverseOf,
     super.frameBuilder,
@@ -75,11 +79,6 @@ class ReverseSlidingDrawer extends SlidingDrawer {
 
   @override
   State<SlidingDrawer> createState() => _ReverseSlidingDrawerState();
-}
-
-enum DrawerOnScrollBehavior {
-  slide,
-  stayBelow,
 }
 
 class SlidingDrawer extends StatefulWidget {
@@ -110,7 +109,7 @@ class SlidingDrawer extends StatefulWidget {
   })  : pinned = false,
         assert(slidePriority < _maxInt);
 
-  SlidingDrawer._reverse({
+  const SlidingDrawer._reverse({
     super.key,
     this.behavior = DrawerOnScrollBehavior.slide,
     this.frameBuilder,
